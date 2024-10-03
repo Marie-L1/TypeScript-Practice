@@ -88,7 +88,7 @@ const properties: {
     status: boolean
     }[] = [
     {
-        image: "",
+        image: "images/columbia-image.jpg",
         title:"Colombian Shack",
         price: 45,
         location: {
@@ -102,7 +102,7 @@ const properties: {
 
     },
     {
-        image: "",
+        image: "images/newyork-apartment.webp",
         title: "Penthouse Apartment",
         price: 85,
         location: {
@@ -116,7 +116,7 @@ const properties: {
 
     },
     {
-        image: "",
+        image: "images/poland-cottage.avif",
         title: "Polish Cottage",
         price: 55,
         location: {
