@@ -1,16 +1,8 @@
-// Number Types mini-challenge 10 10.2
-// Write a function that will only accept numbers and attend to 
-// all TypeScript weakness flags.
-// : number
-// Boolean Types mini-challenge
-// if the last reviewer is a loyalty User, can you add a star to the end of their name?
-// please do so in the existing function, and make sure to declare what type of 
-// parameters the function takes.
-// : boolean
-
-export const reviewTotalDisplay = document.querySelector('#reviews')
+import { showReviewTotal,populateUser } from "./utils";
 
 let isOpen: boolean;
+
+const propertyContainer = document.querySelector(".properties");
 
 const reviews: {
     name: string,
@@ -42,12 +34,6 @@ const reviews: {
     },
 ]
 
-function showReviewTotal(value: number, reviewer: string, isLoyal: boolean) {
-    const iconDisplay = isLoyal ? "⭐️" : " ";
-    reviewTotalDisplay.innerHTML = "review total " + value.toString() + "| last reviewed by " + reviewer + " " + iconDisplay;
-}
-console.log(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
-
 
 // objects
 const you: { 
@@ -65,14 +51,6 @@ const you: {
 }
 console.log(you.userName);
 
-// function populateUser(isReturning: boolean, userName: string ) {
-//     if (isReturning){
-//         returningUserDisplay.innerHTML = 'back'
-//     }
-//     userNameDisplay.innerHTML = userName
-// }
-
-// populateUser(you.isReturning, you.userName)
 
 const properties: {
     image: string,
@@ -137,4 +115,16 @@ showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
+// add the properties
+for (let i = 0; i < properties.length; i++) {
+    const card =document.createElement("div");
 
+    card.classList.add("card");
+    card.innerHTML = properties[i].title;
+    
+    const image = document.createElement("img");
+    image.setAttribute("src", properties[i].image);
+    card.appendChild(image);
+    
+    propertyContainer?.appendChild(card);
+}
