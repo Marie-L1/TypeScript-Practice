@@ -1,5 +1,6 @@
 type Pizza = {
-    name: string,
+    id: number
+    name: string
     price: number
 }
 
@@ -9,11 +10,11 @@ type Order = {
     status: "ordered" | "completed"
 }
 
-const menu = [
-    { name: "Margherita", price: 8 },
-    { name: "Pepperoni", price: 10 },
-    { name: "Hawaiian", price: 10 },
-    { name: "Veggie", price: 9 },
+const menu: Pizza[] = [
+    { id: 1,name: "Margherita", price: 8 },
+    { id: 2, name: "Pepperoni", price: 10 },
+    { id: 3, name: "Hawaiian", price: 10 },
+    { id: 4, name: "Veggie", price: 9 },
 ]
 
 let cashInRegister = 100
@@ -46,9 +47,19 @@ function completeOrder(orderId: number) {
     return order
 }
 
-addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ name: "BBQ Chicken", price: 12 })
-addNewPizza({ name: "Spicy Sausage", price: 11 })
+export function getPizzaDetail(identifier: string | number) {
+    if (typeof identifier === "string") {
+        return menu.find(pizza => pizza.name.toLowerCase() === identifier.toLowerCase())
+    } else if (typeof identifier === "number") {
+        return menu.find(pizza => pizza.id === identifier)
+    } else{
+        throw new Error("Identifier must be a string or a number")
+    }
+}
+
+addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
+addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
