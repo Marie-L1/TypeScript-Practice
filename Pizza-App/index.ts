@@ -23,9 +23,13 @@ const menu: Pizza[] = [
 ]
 
 
-function addNewPizza(pizzaObj: Pizza): void {
-    menu.push(pizzaObj)
-}
+function addNewPizza(pizzaObj: Omit<Pizza, "id">): Pizza {
+    const newPizza: Pizza = { 
+        id: nextPizzaId++, 
+        ...pizzaObj }
+    menu.push(newPizza)
+    return newPizza
+};
 
 
 function placeOrder(pizzaName: string): Order | undefined{
@@ -60,9 +64,9 @@ export function getPizzaDetail(identifier: string | number): Pizza | undefined {
     }
 }
 
-addNewPizza({ id: nextPizzaId++, name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ id: nextPizzaId++, name: "BBQ Chicken", price: 12 })
-addNewPizza({ id: nextPizzaId++, name: "Spicy Sausage", price: 11 })
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ name: "BBQ Chicken", price: 12 })
+addNewPizza({ name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
