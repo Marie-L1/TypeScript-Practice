@@ -3,6 +3,12 @@ type Pizza = {
     price: number
 }
 
+type Order = {
+    id: number
+    pizza: Pizza
+    status: string
+}
+
 const menu = [
     { name: "Margherita", price: 8 },
     { name: "Pepperoni", price: 10 },
@@ -12,13 +18,13 @@ const menu = [
 
 let cashInRegister = 100
 let nextOrderId = 1
-const orderQueue = []
+const orderQueue: Order[] = []
 
 function addNewPizza(pizzaObj: Pizza) {
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName) {
+function placeOrder(pizzaName: string) {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
     if(!selectedPizza){
         console.timeLog(`${pizzaName} is not on the menu`)
