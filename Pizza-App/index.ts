@@ -22,7 +22,6 @@ const menu: Pizza[] = [
     { id: nextPizzaId++, name: "Veggie", price: 9 },
 ]
 
-
 function addNewPizza(pizzaObj: Omit<Pizza, "id">): Pizza {
     const newPizza: Pizza = { 
         id: nextPizzaId++, 
@@ -30,7 +29,6 @@ function addNewPizza(pizzaObj: Omit<Pizza, "id">): Pizza {
     menu.push(newPizza)
     return newPizza
 };
-
 
 function placeOrder(pizzaName: string): Order | undefined{
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
