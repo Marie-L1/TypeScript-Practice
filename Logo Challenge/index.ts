@@ -109,7 +109,6 @@ const properties: {
     },
 ]
 
-
 // Functions
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
